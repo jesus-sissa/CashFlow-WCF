@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <item Title="BANORTE">
+    <item Title="Depositos/Recolecciones" NavigateUrl="/Site/DepositosReceptores.aspx"></item>
+    <item Title="Acreditaciones Transmitidas" NavigateUrl="/Site/AcreditacionesTransmitidas.aspx"></item>
+    <item Title="Base de Cajeros Receptores" NavigateUrl="/Site/BaseCajerosReceptores.aspx"></item>
+    <item Title="Arqueo en Transito" NavigateUrl="/Site/ArqueoTransito.aspx"></item>
+  </item>
+  <item Title="Otros">
+    <item Title="Monitor de Archivos" NavigateUrl="/Site/MonitorArchivos.aspx" ></item>
+    <item Title="Monitoreo Cajeros" NavigateUrl="/Site/sissa/MonitoreoSucursales.aspx" ></item>
+    <item Title="Monitoreo Errores" NavigateUrl="/Site/MonitorErrores.aspx" ></item>    
+  </item>
+  <item Title="Salir" Url="" NavigateUrl="/Account/Logout.aspx"></item>
+</Menu>

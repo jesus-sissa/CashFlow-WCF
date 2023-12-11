@@ -1,0 +1,179 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="BaseCajerosReceptores.aspx.vb" Inherits="SISSA.Cashflow.Web.BaseCajerosReceptores" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v18.2, Version=18.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v18.2, Version=18.2.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+<asp:Content ID="HeaderContent" ContentPlaceHolderID="MainHeader" runat="server">
+    <script type="text/javascript">        
+        function OnClientChange(cmbClient) {
+            cmbsucursal.PerformCallback(cmbClient.GetSelectedItem().value.toString());
+        }
+
+        function OnLostFocusValidateDate(s) {
+            var datetimeStart = dtp_fechaInicial.GetDate();
+            var datetimeEnd = dtp_fechaFinal.GetDate()
+
+            if (Date.parse(datetimeStart) > Date.parse(datetimeEnd)) {
+                s.SetIsValid(false);
+                s.SetErrorText('La fecha final no puede ser menor a la fecha inicial.');
+                s.Focus();                
+            }            
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="row top-content-lg">
+        <div class="row top-title">
+            <div class="col-md-12"><h3 class="mt-1">Base Cajeros Receptores</h3></div>
+        </div>
+        <dx:BootstrapFormLayout ID="BootstrapFormLayout" runat="server">
+            <Items>
+                <dx:BootstrapLayoutItem BeginRow="True" Caption="Cajero" ColSpanMd="4" Name="itemBanco">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapComboBox ID="cmbCajero" runat="server">
+                            </dx:BootstrapComboBox>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem Caption="Bóveda" ColSpanMd="4" Name="itemBoveda">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapComboBox ID="cmbBoveda" runat="server"  NullText="Todos" TextField="CR" ValueField="CR">
+                            </dx:BootstrapComboBox>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem Caption="F. Producción" ColSpanMd="4" Name="itemFechaProduccion">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapDateEdit ID="dtpFechaProduccion" runat="server" ClientInstanceName="dtp_fechaProduccion">
+                                <%--<ClientSideEvents LostFocus="function(s,e) { OnLostFocusValidateDate(s); }" />--%>
+                                <CaptionSettings RequiredMark="*" />                                        
+                                <ValidationSettings>
+                                    <RequiredField IsRequired="true" ErrorText="Debe indicar [Fecha inicial]" />
+                                </ValidationSettings>                                        
+                            </dx:BootstrapDateEdit>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+
+                <dx:BootstrapLayoutItem BeginRow="True" Caption="Cliente" ColSpanMd="8" Name="itemCliente">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapComboBox ID="cmbCliente" runat="server" ClientInstanceName="cmbcliente" NullText="Todos" TextField="Nombre_Comercial" ValueField="Clave_Cliente" 
+                                DropDownStyle="DropDownList" Width="100%">
+                                <ClientSideEvents SelectedIndexChanged="function(s, e) { OnClientChange(s); }" />
+                            </dx:BootstrapComboBox>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem Caption="Sucursal" Name="itemSucursal" ColSpanMd="4">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapComboBox ID="cmbSucursal" runat="server" ClientInstanceName="cmbsucursal" NullText="Todos" TextField="Nombre_Comercial" ValueField="Clave_Sucursal" 
+                                DropDownStyle="DropDownList" OnCallback="cmbSucursal_Callback">
+                            </dx:BootstrapComboBox>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem Caption="Boton" ColSpanMd="3" ShowCaption="False" Name="otemBoton" BeginRow="True" HorizontalAlign="Left">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">                                    
+                            <dx:BootstrapButton ID="btnBuscar" runat="server" ClientInstanceName="btnbuscar" AutoPostBack="true" Text="Buscar" Width="200px">
+                                <SettingsBootstrap RenderOption="Danger" />                                                                                
+                            </dx:BootstrapButton>                                    
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem Caption="Generar excel directo" ColSpanMd="6" HorizontalAlign="Left" Name="itemGenerarExcel" ShowCaption="False">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:BootstrapCheckBox ID="chkGenerarExcel" runat="server" Text="Generar excel directo" CheckState="Unchecked">
+                            </dx:BootstrapCheckBox>
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+                <dx:BootstrapLayoutItem ColSpanMd="3" HorizontalAlign="Right" ShowCaption="False">
+                    <ContentCollection>
+                        <dx:ContentControl runat="server">
+                            <dx:ASPxButton ID="btnExportar" runat="server" Text="" RenderMode="Link">
+                                <Image Url="/Content/Images/file_excel_down_48.png" UrlDisabled="/Content/Images/file_excel_down_48_dis.png" />
+                            </dx:ASPxButton>                            
+                        </dx:ContentControl>
+                    </ContentCollection>
+                </dx:BootstrapLayoutItem>
+            </Items>
+        </dx:BootstrapFormLayout>
+    </div>
+    <div class="row">
+        <dx:ASPxGridView ID="gridDepositos" runat="server" AutoGenerateColumns="False" Width="100%">
+            <SettingsPopup>
+                <HeaderFilter MinHeight="140px"></HeaderFilter>
+            </SettingsPopup>
+            <SettingsPager Mode="ShowPager" Position="Bottom" PageSize="10" Visible="true" />
+            <Columns>
+                <dx:GridViewDataTextColumn Caption="No. Serie" FieldName="Serie" Name="gcSerie" ReadOnly="True" VisibleIndex="0" Width="100px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="ID Banco" FieldName="Clave_Banco" Name="gcClaveBanco" ReadOnly="True" VisibleIndex="1" Width="60px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center">
+                    </CellStyle>
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Cliente" FieldName="Nombre_Cliente" Name="gcNombreCliente" ReadOnly="True" VisibleIndex="2">
+                    <HeaderStyle HorizontalAlign="Left" />
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Sucursal" FieldName="Nombre_Sucursal" Name="gcNombreSucursal" ReadOnly="True" VisibleIndex="3">
+                    <HeaderStyle HorizontalAlign="Left" />
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Bóveda/CRC" FieldName="CRC" Name="gcCRC" ReadOnly="True" VisibleIndex="4" Width="40px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Cuenta" FieldName="Cuenta" Name="gcCuenta" ReadOnly="True" VisibleIndex="5" Width="80px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>                
+                <dx:GridViewDataTextColumn Caption="F.Produccion" FieldName="FechaProduccion" Name="gcFechaProduccion" ReadOnly="True" VisibleIndex="6" Width="85px">
+                    <PropertiesTextEdit DisplayFormatString="dd/MM/yyyy" />
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Marca" FieldName="Marca" Name="gcMarca" ReadOnly="True" VisibleIndex="7" Width="80px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Modelo" FieldName="Modelo" Name="gcModelo" ReadOnly="True" VisibleIndex="8" Width="60px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center">
+                    </CellStyle>
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Status" FieldName="Estatus" Name="gcStatus" ReadOnly="True" VisibleIndex="7" Width="80px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="F.Baja" FieldName="FechaBaja" Name="gcFechaBaja" ReadOnly="True" VisibleIndex="9" Width="80px">
+                    <PropertiesTextEdit DisplayFormatString="dd/MM/yyyy" />
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Hr Corte" FieldName="HoraAcreditacion" Name="gcHoraCorte" ReadOnly="True" VisibleIndex="9" Width="90px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Right" />                    
+                </dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn Caption="Dias" FieldName="DiasAcreditacion" Name="gcModelo" ReadOnly="True" VisibleIndex="10" Width="60px">
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <CellStyle HorizontalAlign="Center" />                    
+                </dx:GridViewDataTextColumn>                
+            </Columns>
+        </dx:ASPxGridView>
+        
+    </div>
+    <div class="row">
+        <dx:ASPxGridView ID="GridExporter" runat="server" AutoGenerateColumns="true" Width="100%" Visible="false">
+        </dx:ASPxGridView>
+        <dx:ASPxGridViewExporter ID="ASPxGridViewExporter" runat="server" ExportedRowType="All" GridViewID="GridExporter">
+        </dx:ASPxGridViewExporter>
+    </div>
+</asp:Content>
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cashflow.Web.Service", "Cashflow.Web.Service.csproj", "{F0E9735D-58AA-4CF0-A4EA-CAB610B3AED8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Cashflow.Web.Core", "..\Cashflow.Web.Core\Cashflow.Web.Core.vbproj", "{B96DD561-4A9D-4009-82DC-0F61380FFC70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0E9735D-58AA-4CF0-A4EA-CAB610B3AED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E9735D-58AA-4CF0-A4EA-CAB610B3AED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E9735D-58AA-4CF0-A4EA-CAB610B3AED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E9735D-58AA-4CF0-A4EA-CAB610B3AED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B96DD561-4A9D-4009-82DC-0F61380FFC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B96DD561-4A9D-4009-82DC-0F61380FFC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B96DD561-4A9D-4009-82DC-0F61380FFC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B96DD561-4A9D-4009-82DC-0F61380FFC70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE3C6FA6-0609-4900-B1CD-66E05404E7F4}
+	EndGlobalSection
+EndGlobal

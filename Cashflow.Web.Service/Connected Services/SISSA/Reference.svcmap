@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="34544501-6800-4f52-b7b7-c7c020251433" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://www.sissaseguridad.com/WsCajerosEmpresariales/WsCajerosEmpresariales.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WsCajerosEmpresariales.wsdl" MetadataType="Wsdl" ID="a2f89e6e-5d92-4756-9f6f-73c6fd5d2752" SourceId="1" SourceUrl="https://www.sissaseguridad.com/WsCajerosEmpresariales/WsCajerosEmpresariales.svc?wsdl" />
+    <MetadataFile FileName="WsCajerosEmpresariales.xsd" MetadataType="Schema" ID="15511efd-21eb-4f40-91ef-0813831bbeef" SourceId="1" SourceUrl="https://www.sissaseguridad.com/WsCajerosEmpresariales/WsCajerosEmpresariales.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsCajerosEmpresariales1.xsd" MetadataType="Schema" ID="f46df974-a765-4ceb-b5bb-b86ebdb84957" SourceId="1" SourceUrl="https://www.sissaseguridad.com/WsCajerosEmpresariales/WsCajerosEmpresariales.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
